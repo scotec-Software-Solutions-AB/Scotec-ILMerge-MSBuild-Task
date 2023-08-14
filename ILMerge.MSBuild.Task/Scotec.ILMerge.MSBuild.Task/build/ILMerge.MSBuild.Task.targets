@@ -3,7 +3,10 @@
 
   <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)..\tools\ILMerge.MsBuild.Task.dll" TaskName="MergeTask" />
 
-  <Target Name="MergeAssembly" AfterTargets="CopyFilesToOutputDirectory">
+    <!-- do not copy copy-local assemblies, they will be merged -->
+    <Target Name="_CopyFilesMarkedCopyLocal" />
+
+	<Target Name="MergeAssembly" AfterTargets="CopyFilesToOutputDirectory">
 
     <ItemGroup>
       <CopyLocalReferences Include="@(ReferencePath)" Condition=" '%(CopyLocal)' == 'true' "/>
@@ -18,6 +21,7 @@
       ProjectPath="$(ProjectPath)"
       TargetDir="$(TargetDir)"
       TargetPath="$(TargetPath)"
+      IntermediateOutputPath="$(ProjectDir)$(BaseIntermediateOutputPath)$(Configuration)\$(TargetFileName)"
       TargetFileName="$(TargetFileName)"
       InputAssemblies="@(CopyLocalReferences)"
       AdditionalLocations="@(DoNotCopyReferences->'%(rootdir)%(directory)')"

@@ -5,7 +5,7 @@ set ver=%1
 if "%ver%" == "" goto error
 
 :pack
-Nuget pack ILMerge.MSBuild.Task.nuspec -Version %ver%
+Nuget pack Scotec.ILMerge.MSBuild.Task.nuspec -Version %ver%
 goto done
 
 :error

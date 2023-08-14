@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILMerge.MSBuild.Task", "ILMerge.MSBuild.Task\ILMerge.MSBuild.Task.csproj", "{43FD3A69-730F-4FA0-9036-0897F3B758EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotec.ILMerge.MSBuild.Task", "Scotec.ILMerge.MSBuild.Task\Scotec.ILMerge.MSBuild.Task.csproj", "{43FD3A69-730F-4FA0-9036-0897F3B758EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

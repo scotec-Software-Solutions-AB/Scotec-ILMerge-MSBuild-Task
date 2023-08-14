@@ -29,6 +29,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -75,6 +76,8 @@ namespace ILMerge.MsBuild.Task
 
         public string TargetPath { get; set; }
 
+        public string IntermediateOutputPath { get; set; }
+
         public string TargetFileName { get; set; }
 
         [Required]
@@ -92,6 +95,7 @@ namespace ILMerge.MsBuild.Task
 
         public MergeTask()
         {
+            Debugger.Launch();
             this.InputAssemblies = new ITaskItem[0];
         }
 
@@ -188,6 +192,7 @@ namespace ILMerge.MsBuild.Task
             Log.LogMessage($"ProjectPath: {ProjectPath}");
             Log.LogMessage($"TargetDir: {TargetDir}");
             Log.LogMessage($"TargetPath: {TargetPath}");
+            Log.LogMessage($"IntermediateOutputPath: {IntermediateOutputPath}");
             Log.LogMessage($"TargetFileName: {TargetFileName}");
             Log.LogMessage($"TargetFrameworkVersion: {TargetFrameworkVersion}");
             Log.LogMessage($"TargetArchitecture: {TargetArchitecture}");
@@ -236,6 +241,7 @@ namespace ILMerge.MsBuild.Task
                 .Replace("$(ProjectPath)", EscapePath(this.ProjectPath))
                 .Replace("$(TargetDir)", EscapePath(this.TargetDir))
                 .Replace("$(TargetPath)", EscapePath(this.TargetPath))
+                .Replace("$(IntermediateOutputPath)", EscapePath(this.IntermediateOutputPath))
                 .Replace("$(TargetFileName)", EscapePath(this.TargetFileName))
                 .Replace("$(AssemblyOriginatorKeyFile)", EscapePath(this.KeyFile));
         }
@@ -258,7 +264,8 @@ namespace ILMerge.MsBuild.Task
 
             if (!settings.General.OutputFile.HasValue())
             {
-                settings.General.OutputFile = Path.Combine(this.TargetDir, "ILMerge", this.TargetFileName);
+                settings.General.OutputFile = Path.Combine(this.TargetDir, this.TargetFileName);
+                //settings.General.OutputFile = Path.Combine(this.TargetDir, "ILMerge", this.TargetFileName);
                 Log.LogMessage("Applying default value for OutputFile.");
             }
 
@@ -268,14 +275,16 @@ namespace ILMerge.MsBuild.Task
                 Log.LogMessage($"Applying default value for TargetPlatform: {settings.General.TargetPlatform}");
             }
 
+            var targetPath = string.IsNullOrEmpty(IntermediateOutputPath) ? TargetPath : IntermediateOutputPath;
             if (settings.General.InputAssemblies == null || settings.General.InputAssemblies.Count == 0)
             {
                 Log.LogMessage("No input assembles were found in configuration.");
 
                 settings.General.InputAssemblies = new List<string>();
 
-                Log.LogMessage($"Adding target assembly: {this.TargetPath}");
-                settings.General.InputAssemblies.Add(this.TargetPath);
+
+                Log.LogMessage($"Adding target assembly: {targetPath}");
+                settings.General.InputAssemblies.Add(targetPath);
 
                 foreach (var item in this.InputAssemblies)
                 {
@@ -291,8 +300,8 @@ namespace ILMerge.MsBuild.Task
                     Log.LogMessage($"Config input assembly: {item}");
                 }
 
-                Log.LogMessage($"Adding target assembly at position [0]: {this.TargetPath}");
-                settings.General.InputAssemblies.Insert(0, this.TargetPath);
+                Log.LogMessage($"Adding target assembly at position [0]: {targetPath}");
+                settings.General.InputAssemblies.Insert(0, targetPath);
             }
 
             if (settings.Advanced == null)
@@ -385,7 +394,10 @@ namespace ILMerge.MsBuild.Task
 
             merger.SetTargetPlatform(tp[0].Trim(), @tp[1].Trim());
             merger.SetInputAssemblies(settings.General.InputAssemblies.ToArray());
-            merger.SetSearchDirectories(settings.Advanced.SearchDirectories.ToArray());
+            merger.SetSearchDirectories(settings.Advanced.SearchDirectories
+                .Concat(settings.General.InputAssemblies.Select(item => Path.GetDirectoryName(item))
+                    .Distinct())
+                .ToArray());
 
             try
             {
