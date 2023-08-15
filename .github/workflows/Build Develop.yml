@@ -32,7 +32,5 @@ jobs:
       run: dotnet restore ./Source/Scotec.ILMerge.MSBuild.Task.sln
     - name: Build
       run: dotnet build --no-restore ./Source/Scotec.ILMerge.MSBuild.Task.sln -c Release -p:Version=$GITVERSION_ASSEMBLYSEMVER -p:PackageVersion=$GITVERSION_SEMVER -p:CompanyName="scotec Software Solutions AB"
-#    - name: Test
-#      run: dotnet test --no-restore --no-build --verbosity normal ./Source/Scotec.Ssc/Scotec.Ssc.sln
-#    - name: Push project
-#      run: dotnet nuget push Source/Scotec.Ssc/**/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
+    - name: Push project
+      run: dotnet nuget push Source/Scotec.ILMerge.MSBuild.Task/**/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
