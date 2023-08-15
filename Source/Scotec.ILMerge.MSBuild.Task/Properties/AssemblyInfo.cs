@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ILMerge.MSBuild.Task")]
-[assembly: AssemblyDescription("ILMerge Configurable MSBuild Task")]
+[assembly: AssemblyTitle("Scotec.ILMerge.MSBuild.Task")]
+[assembly: AssemblyDescription("ILMerge MSBuild Task")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Emerson Brito")]
-[assembly: AssemblyProduct("ILMerge.MSBuild.Task")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("scotec Software Solutions AB")]
+[assembly: AssemblyProduct("Scotec.ILMerge.MSBuild.Task")]
+[assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

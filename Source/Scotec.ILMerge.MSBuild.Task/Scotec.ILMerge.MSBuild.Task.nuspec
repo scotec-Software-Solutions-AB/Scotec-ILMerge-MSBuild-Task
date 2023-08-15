@@ -11,12 +11,13 @@
     <copyright>scotec Software Solutions AB (c) 2023</copyright>
     <projectUrl>https://github.com/scotec-Software-Solutions-AB/Scotec-ILMerge-MSBuild-Task</projectUrl>
 	<license type="expression">MIT</license>	
-	<icon>.\icon.png</icon>
+	<icon>images\icon.png</icon>
     <tags>ilmerge msbuild merge scotec</tags>
   </metadata>
   <files>
-    <file src="..\Scotec.ILMerge.MSBuild.Task\Scotec.ILMerge.MSBuild.Task\bin\release\Scotec.ILMerge.MsBuild.Task.dll" target="tools\Scotec.ILMerge.MsBuild.Task.dll" />
-    <file src="..\Scotec.ILMerge.MSBuild.Task\Scotec.ILMerge.MSBuild.Task\bin\release\Scotec.ILMerge.MsBuild.Task.pdb" target="tools\Scotec.ILMerge.MsBuild.Task.pdb" />
-    <file src="..\Scotec.ILMerge.MSBuild.Task\Scotec.ILMerge.MSBuild.Task\build\Scotec.ILMerge.MSBuild.Task.targets" target="build\Scotec.ILMerge.MSBuild.Task.targets" />
+    <file src=".\bin\$configuration$\Scotec.ILMerge.MsBuild.Task.dll" target="tools\Scotec.ILMerge.MsBuild.Task.dll" />
+    <file src=".\bin\$configuration$\Scotec.ILMerge.MsBuild.Task.pdb" target="tools\Scotec.ILMerge.MsBuild.Task.pdb" />
+    <file src=".\build\Scotec.ILMerge.MSBuild.Task.targets" target="build\Scotec.ILMerge.MSBuild.Task.targets" />
+	<file src=".\images\icon.png" target="images\" />
   </files>
 </package>
