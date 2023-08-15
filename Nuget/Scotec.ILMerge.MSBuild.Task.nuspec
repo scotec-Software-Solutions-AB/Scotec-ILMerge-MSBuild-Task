@@ -15,8 +15,9 @@
     <tags>ilmerge msbuild merge scotec</tags>
   </metadata>
   <files>
-    <file src="..\Scotec.ILMerge.MSBuild.Task\Scotec.ILMerge.MSBuild.Task\bin\Release\Scotec.ILMerge.MsBuild.Task.dll" target="tools\Scotec.ILMerge.MsBuild.Task.dll" />
-    <file src="..\Scotec.ILMerge.MSBuild.Task\Scotec.ILMerge.MSBuild.Task\bin\Release\Scotec.ILMerge.MsBuild.Task.pdb" target="tools\Scotec.ILMerge.MsBuild.Task.pdb" />
-    <file src="..\Scotec.ILMerge.MSBuild.Task\Scotec.ILMerge.MSBuild.Task\build\Scotec.ILMerge.MSBuild.Task.targets" target="build\Scotec.ILMerge.MSBuild.Task.targets" />
+    <file src="..\Source\Scotec.ILMerge.MSBuild.Task\bin\Release\Scotec.ILMerge.MsBuild.Task.dll" target="tools\Scotec.ILMerge.MsBuild.Task.dll" />
+    <file src="..\Source\Scotec.ILMerge.MSBuild.Task\bin\Release\Scotec.ILMerge.MsBuild.Task.pdb" target="tools\Scotec.ILMerge.MsBuild.Task.pdb" />
+    <file src="..\Source\Scotec.ILMerge.MSBuild.Task\build\Scotec.ILMerge.MSBuild.Task.targets" target="build\Scotec.ILMerge.MSBuild.Task.targets" />
+	<file src=".\icon.png" target="images\" />
   </files>
 </package>
