@@ -4,6 +4,7 @@
     MIT License
 
     Copyright (c) 2016 Emerson Brito
+    Copyright (c) 2023 Olaf Meyer
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +46,7 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
 
     public MergeTask()
     {
-        InputAssemblies = new ITaskItem[0];
+        InputAssemblies = Array.Empty<ITaskItem>();
     }
 
     #endregion
