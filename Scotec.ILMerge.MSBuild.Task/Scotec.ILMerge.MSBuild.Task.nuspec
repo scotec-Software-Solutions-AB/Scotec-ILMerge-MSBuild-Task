@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Scotec.ILMerge.MSBuild.Task</id>
-    <version>$version$</version>
+    <version>1.0.0-beta1</version>
     <title>ILMerge MSBuild-Task</title>
     <authors>scotec Software Solutions AB</authors>
     <owners>scotec Software Solutions AB</owners>

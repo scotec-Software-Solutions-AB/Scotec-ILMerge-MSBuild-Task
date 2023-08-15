@@ -31,7 +31,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILMerge.MsBuild.Task
+namespace Scotec.ILMerge.MsBuild.Task
 {
 
     public class AdvancedSettings

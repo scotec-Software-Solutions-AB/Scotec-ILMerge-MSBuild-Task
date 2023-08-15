@@ -30,7 +30,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILMerge.MsBuild.Task
+namespace Scotec.ILMerge.MsBuild.Task
 {
     static class StringExtensions
     {

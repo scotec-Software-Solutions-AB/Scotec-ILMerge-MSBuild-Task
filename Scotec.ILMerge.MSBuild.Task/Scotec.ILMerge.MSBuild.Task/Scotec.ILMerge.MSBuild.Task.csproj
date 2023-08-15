@@ -7,8 +7,8 @@
     <ProjectGuid>{43FD3A69-730F-4FA0-9036-0897F3B758EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ILMerge.MSBuild.Task</RootNamespace>
-    <AssemblyName>ILMerge.MSBuild.Task</AssemblyName>
+    <RootNamespace>Scotec.ILMerge.MSBuild.Task</RootNamespace>
+    <AssemblyName>Scotec.ILMerge.MSBuild.Task</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

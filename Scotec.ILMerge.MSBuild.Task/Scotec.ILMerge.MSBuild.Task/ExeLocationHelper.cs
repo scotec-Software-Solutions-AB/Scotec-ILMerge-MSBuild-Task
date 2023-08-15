@@ -34,7 +34,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ILMerge.MsBuild.Task
+namespace Scotec.ILMerge.MsBuild.Task
 {
     static class ExeLocationHelper
     {
