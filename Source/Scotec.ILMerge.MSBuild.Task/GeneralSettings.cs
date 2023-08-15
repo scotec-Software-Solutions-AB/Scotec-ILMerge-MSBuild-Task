@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*
     MIT License
 
@@ -22,40 +23,27 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
  */
+
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Scotec.ILMerge.MsBuild.Task
+namespace Scotec.ILMerge.MsBuild.Task;
+
+public class GeneralSettings
 {
-
-    public class GeneralSettings
+    public GeneralSettings()
     {
-
-        [DataMember(Order = 1)]
-        public string OutputFile { get; set; } = null;
-
-        [DataMember(Order = 2)]
-        public string TargetPlatform { get; set; } = null;
-
-        [DataMember(Order = 3)]
-        public string KeyFile { get; set; } = null;
-
-        [DataMember(Order = 4)]
-        public string AlternativeILMergePath { get; set; } = null;
-
-        [DataMember(Order = 5)]
-        public List<string> InputAssemblies { get; set; }
-
-        public GeneralSettings()
-        {
-            InputAssemblies = new List<string>();
-        }
-
+        InputAssemblies = new List<string>();
     }
+
+    [DataMember(Order = 1)] public string OutputFile { get; set; }
+
+    [DataMember(Order = 2)] public string TargetPlatform { get; set; }
+
+    [DataMember(Order = 3)] public string KeyFile { get; set; }
+
+    [DataMember(Order = 4)] public string AlternativeILMergePath { get; set; }
+
+    [DataMember(Order = 5)] public List<string> InputAssemblies { get; set; }
 }

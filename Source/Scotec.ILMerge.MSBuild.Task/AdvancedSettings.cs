@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*
     MIT License
 
@@ -22,85 +23,76 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
  */
+
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+namespace Scotec.ILMerge.MsBuild.Task;
 
-namespace Scotec.ILMerge.MsBuild.Task
+public class AdvancedSettings
 {
+    #region Constructors
 
-    public class AdvancedSettings
+    public AdvancedSettings()
     {
-
-        #region Property Wrappers
-
-        public bool AllowMultipleAssemblyLevelAttributes { get; set; } = false;
-
-        public bool AllowWildCards { get; set; } = false;
-
-        public bool AllowZeroPeKind { get; set; } = false;
-
-        public string AttributeFile { get; set; } = null;
-        
-        public bool Closed { get; set; } = false;
-
-        public bool CopyAttributes { get; set; } = true;
-
-        public bool DebugInfo { get; set; } = true;
-
-        public bool DelaySign { get; set; } = false;
-
-        public bool DeleteCopiesOverwriteTarget { get; set; } = false;
-
-        public string ExcludeFile { get; set; } = "";
-
-        public int FileAlignment { get; set; } = 512;
-
-        public bool Internalize { get; set; } = false;
-
-        public bool Log { get; set; } = false;
-
-        public string LogFile { get; set; } = null;
-
-        public bool PublicKeyTokens { get; set; } = true;
-
-        public string TargetKind { get; set; } = null;
-
-        public bool UnionMerge { get; set; } = false;
-
-        public string Version { get; set; } = null;
-
-        public bool XmlDocumentation { get; set; } = false;
-
-        #endregion
-
-        #region Method Wrappers
-
-        /// <summary>
-        /// Default is none. This option allows the user to either allow all public types to be renamed when they are duplicates, or to specify it for arbitrary type names.
-        /// </summary>
-        public string AllowDuplicateType { get; set; } = null;
-
-        /// <summary>
-        /// internal use
-        /// </summary>
-        public List<string> SearchDirectories { get; set; }
-
-        #endregion
-
-        #region Constructors
-
-        public AdvancedSettings()
-        {
-            SearchDirectories = new List<string>();
-        }
-
-        #endregion
-
+        SearchDirectories = new List<string>();
     }
+
+    #endregion
+
+    #region Property Wrappers
+
+    public bool AllowMultipleAssemblyLevelAttributes { get; set; } = false;
+
+    public bool AllowWildCards { get; set; } = false;
+
+    public bool AllowZeroPeKind { get; set; } = false;
+
+    public string AttributeFile { get; set; } = null;
+
+    public bool Closed { get; set; } = false;
+
+    public bool CopyAttributes { get; set; } = true;
+
+    public bool DebugInfo { get; set; } = true;
+
+    public bool DelaySign { get; set; } = false;
+
+    public bool DeleteCopiesOverwriteTarget { get; set; } = false;
+
+    public string ExcludeFile { get; set; } = "";
+
+    public int FileAlignment { get; set; } = 512;
+
+    public bool Internalize { get; set; } = false;
+
+    public bool Log { get; set; } = false;
+
+    public string LogFile { get; set; } = null;
+
+    public bool PublicKeyTokens { get; set; } = true;
+
+    public string TargetKind { get; set; } = null;
+
+    public bool UnionMerge { get; set; } = false;
+
+    public string Version { get; set; } = null;
+
+    public bool XmlDocumentation { get; set; } = false;
+
+    #endregion
+
+    #region Method Wrappers
+
+    /// <summary>
+    ///     Default is none. This option allows the user to either allow all public types to be renamed when they are
+    ///     duplicates, or to specify it for arbitrary type names.
+    /// </summary>
+    public string AllowDuplicateType { get; set; } = null;
+
+    /// <summary>
+    ///     internal use
+    /// </summary>
+    public List<string> SearchDirectories { get; set; }
+
+    #endregion
 }

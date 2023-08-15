@@ -1,4 +1,5 @@
 ﻿#region MIT License
+
 /*
     MIT License
 
@@ -22,53 +23,39 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
  */
+
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace Scotec.ILMerge.MsBuild.Task
+namespace Scotec.ILMerge.MsBuild.Task;
+
+public class MergerSettings
 {
+    public GeneralSettings General { get; set; } = new();
 
-    public class MergerSettings
+    public AdvancedSettings Advanced { get; set; } = new();
+
+    public string ToJson()
     {
-
-        public GeneralSettings General { get; set; } = new GeneralSettings();
-
-        public AdvancedSettings Advanced { get; set; } = new AdvancedSettings();
-
-        public string ToJson()
+        if (Advanced is { SearchDirectories: not null })
         {
-            if(this.Advanced != null && this.Advanced.SearchDirectories != null)
-            {
-                this.Advanced.SearchDirectories = this.Advanced.SearchDirectories.OrderBy(d => d).ToList();
-            }
-            
-            var json = JsonSerializer.Serialize(this);
-            return json;
+            Advanced.SearchDirectories = Advanced.SearchDirectories.OrderBy(d => d).ToList();
         }
 
-        public static MergerSettings FromJson(string jsonString)
+        var json = JsonSerializer.Serialize(this);
+        return json;
+    }
+
+    public static MergerSettings FromJson(string jsonString)
+    {
+        if (string.IsNullOrWhiteSpace(jsonString))
         {
-
-            if (string.IsNullOrWhiteSpace(jsonString))
-            {
-                throw new ArgumentNullException(nameof(jsonString));
-            }
-
-            var obj = JsonSerializer.Deserialize<MergerSettings>(jsonString);
-
-            return obj;
-
+            throw new ArgumentNullException(nameof(jsonString));
         }
 
+        var obj = JsonSerializer.Deserialize<MergerSettings>(jsonString);
 
+        return obj;
     }
 }
