@@ -14,3 +14,5 @@ goto done
 
 :done
 echo Done!
+
+pause
