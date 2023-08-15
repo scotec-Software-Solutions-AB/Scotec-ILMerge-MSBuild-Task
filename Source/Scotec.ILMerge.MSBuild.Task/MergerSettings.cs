@@ -31,8 +31,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 
 namespace Scotec.ILMerge.MsBuild.Task
 {
@@ -46,14 +46,12 @@ namespace Scotec.ILMerge.MsBuild.Task
 
         public string ToJson()
         {
-            var srl = new JavaScriptSerializer();
-
             if(this.Advanced != null && this.Advanced.SearchDirectories != null)
             {
                 this.Advanced.SearchDirectories = this.Advanced.SearchDirectories.OrderBy(d => d).ToList();
             }
             
-            var json = srl.Serialize(this);
+            var json = JsonSerializer.Serialize(this);
             return json;
         }
 
@@ -65,8 +63,7 @@ namespace Scotec.ILMerge.MsBuild.Task
                 throw new ArgumentNullException(nameof(jsonString));
             }
 
-            var srl = new JavaScriptSerializer();
-            var obj = srl.Deserialize<MergerSettings>(jsonString);
+            var obj = JsonSerializer.Deserialize<MergerSettings>(jsonString);
 
             return obj;
 
