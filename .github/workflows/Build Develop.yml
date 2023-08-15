@@ -1,4 +1,4 @@
-name: Build Ssc - Develop
+name: Build - Develop
 
 on: [workflow_dispatch]
 
