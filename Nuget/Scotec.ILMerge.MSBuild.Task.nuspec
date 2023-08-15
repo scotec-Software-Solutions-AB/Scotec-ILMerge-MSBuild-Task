@@ -3,7 +3,7 @@
   <metadata>
     <id>Scotec.ILMerge.MSBuild.Task</id>
     <version>$version$</version>
-    <title>ILMerge MSBuild-Task</title>
+    <title>Scotec ILMerge MSBuild-Task</title>
     <authors>scotec Software Solutions AB</authors>
     <owners>scotec Software Solutions AB</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -15,8 +15,8 @@
     <tags>ilmerge msbuild merge scotec</tags>
   </metadata>
   <files>
-    <file src="..\Source\Scotec.ILMerge.MSBuild.Task\bin\Release\Scotec.ILMerge.MsBuild.Task.dll" target="tools\Scotec.ILMerge.MsBuild.Task.dll" />
-    <file src="..\Source\Scotec.ILMerge.MSBuild.Task\bin\Release\Scotec.ILMerge.MsBuild.Task.pdb" target="tools\Scotec.ILMerge.MsBuild.Task.pdb" />
+    <file src="..\Source\Scotec.ILMerge.MSBuild.Task\bin\$configuration$\Scotec.ILMerge.MsBuild.Task.dll" target="tools\Scotec.ILMerge.MsBuild.Task.dll" />
+    <file src="..\Source\Scotec.ILMerge.MSBuild.Task\bin\$configuration$\Scotec.ILMerge.MsBuild.Task.pdb" target="tools\Scotec.ILMerge.MsBuild.Task.pdb" />
     <file src="..\Source\Scotec.ILMerge.MSBuild.Task\build\Scotec.ILMerge.MSBuild.Task.targets" target="build\Scotec.ILMerge.MSBuild.Task.targets" />
 	<file src="icon.png" target="images\" />
   </files>
