@@ -23,6 +23,7 @@
 		<RepositoryType>git</RepositoryType>
 		<SignAssembly>False</SignAssembly>
 		<Title>Scotec.ILMerge.MSBuild.Task</Title>
+		<PackageTags>scotec;ILMerge;MSBuild;build task</PackageTags>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -40,7 +41,7 @@
 		<None Include=".\build\Scotec.ILMerge.MSBuild.Task.targets" Pack="true" PackagePath="build" />
 		<None Include="_._" Pack="true" PackagePath="lib\net472" />
 		<!-- <Content Include="..\..\..\license.txt" Link="license.txt" Pack="true" PackagePath="license.txt"/> -->
-		<None Include="$(TargetDir)*.dll" Pack="true" PackagePath="tools" />
+		<None Include="$(TargetDir)*.dll" Exclude="$(TargetPath)" Pack="true" PackagePath="tools" />
 	</ItemGroup>
 
 	<ItemGroup>
