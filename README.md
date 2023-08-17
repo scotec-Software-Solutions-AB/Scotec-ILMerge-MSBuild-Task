@@ -15,7 +15,7 @@ Getting Started
 Use Nuget to add Scotec.ILMerge.MSBuild.Task to your Visual Studio project:
 
 ```
-Install-Package ILMerge.MSBuild.Task
+Install-Package Scotec.ILMerge.MSBuild.Task
 ```
 
 Build your project. The merged assembly will be stored in an ILMerge folder under your project output.
