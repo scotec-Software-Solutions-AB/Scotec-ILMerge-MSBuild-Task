@@ -52,7 +52,7 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
 
     public MergeTask()
     {
-        //Debugger.Launch();
+        Debugger.Launch();
         InputAssemblies = Array.Empty<ITaskItem>();
     }
 

@@ -13,8 +13,8 @@
 		<Company>$(CompanyName)</Company>
 		<Copyright>$(CompanyName)</Copyright>
 		<Description>ILMerge MSBuild Task</Description>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<IsPublishable>True</IsPublishable>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<IsPublishable>False</IsPublishable>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://www.scotec-software.com</PackageProjectUrl>
@@ -26,9 +26,10 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<DebugType>embedded</DebugType>
-		<DebugSymbols>true</DebugSymbols>
-		<!--<DevelopmentDependency>True</DevelopmentDependency>-->
+		<!--<DebugType>embedded</DebugType>
+		<DebugSymbols>true</DebugSymbols>-->
+	
+		<DevelopmentDependency>True</DevelopmentDependency>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<!-- <BaseOutputPath>tools</BaseOutputPath> -->
 		<IsTool>True</IsTool>
