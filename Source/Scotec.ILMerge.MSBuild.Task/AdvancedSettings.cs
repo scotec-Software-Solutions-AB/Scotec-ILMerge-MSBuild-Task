@@ -27,6 +27,8 @@
 
 #endregion
 
+using System.Collections.Generic;
+
 namespace Scotec.ILMerge.MsBuild.Task;
 
 public class AdvancedSettings

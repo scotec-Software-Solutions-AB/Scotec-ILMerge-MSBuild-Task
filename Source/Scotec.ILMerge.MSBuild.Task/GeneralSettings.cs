@@ -27,6 +27,7 @@
 
 #endregion
 
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Scotec.ILMerge.MsBuild.Task;

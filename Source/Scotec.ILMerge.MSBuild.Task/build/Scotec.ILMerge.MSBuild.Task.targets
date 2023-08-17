@@ -8,10 +8,10 @@
 
 	<Target Name="MergeAssembly" AfterTargets="CopyFilesToOutputDirectory">
 
-    <ItemGroup>
+    <!--<ItemGroup>
       <CopyLocalReferences Include="@(ReferencePath)" Condition=" '%(CopyLocal)' == 'true' "/>
       <DoNotCopyReferences Include="@(ReferencePath)" Condition=" '%(CopyLocal)' == 'false' " />
-    </ItemGroup>
+    </ItemGroup>-->
 
     <MergeTask
       SolutionDir="$(SolutionDir)"
@@ -21,10 +21,10 @@
       ProjectPath="$(ProjectPath)"
       TargetDir="$(TargetDir)"
       TargetPath="$(TargetPath)"
-      IntermediateOutputPath="$(ProjectDir)$(BaseIntermediateOutputPath)$(Configuration)\$(TargetFileName)"
+      IntermediateOutputPath="$(ProjectDir)$(IntermediateOutputPath)$(TargetFileName)"
       TargetFileName="$(TargetFileName)"
-      InputAssemblies="@(CopyLocalReferences)"
-      AdditionalLocations="@(DoNotCopyReferences->'%(rootdir)%(directory)')"
+      InputAssemblies="@(ReferenceCopyLocalPaths)"
+      AdditionalLocations="@(ReferencePath->'%(rootdir)%(directory)')"
       TargetFrameworkVersion="$(TargetFrameworkVersion)"
       TargetArchitecture="$(Platform)"
       ILMergeConsolePath="$(ILMergeConsolePath)"

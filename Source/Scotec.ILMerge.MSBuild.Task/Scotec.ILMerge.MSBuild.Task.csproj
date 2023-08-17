@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>net472</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <LangVersion>latest</LangVersion>
 
@@ -28,6 +28,8 @@
 	<PropertyGroup>
 		<DebugType>embedded</DebugType>
 		<DebugSymbols>true</DebugSymbols>
+		<!--<DevelopmentDependency>True</DevelopmentDependency>-->
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<!-- <BaseOutputPath>tools</BaseOutputPath> -->
 		<IsTool>True</IsTool>
 	</PropertyGroup>
@@ -35,18 +37,18 @@
 	<ItemGroup>
 		<None Include=".\images\icon.png" Pack="true" PackagePath="" />
 		<None Include=".\build\Scotec.ILMerge.MSBuild.Task.targets" Pack="true" PackagePath="build" />
-		<None Include="_._" Pack="true" PackagePath="lib\netstandard2.0" />
+		<None Include="_._" Pack="true" PackagePath="lib\net472" />
 		<!-- <Content Include="..\..\..\license.txt" Link="license.txt" Pack="true" PackagePath="license.txt"/> -->
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="ilmerge" Version="3.0.41" />
-	  <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.7.0" />
-	  <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-	  <PackageReference Include="System.Text.Json" Version="7.0.3" />
+		<None Include="$(TargetDir)*.dll" Pack="true" PackagePath="tools" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Properties\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.7.0" />
+	  <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+	  <PackageReference Include="System.Text.Json" Version="7.0.3" />
 	</ItemGroup>
 </Project>

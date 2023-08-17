@@ -27,6 +27,11 @@
 
 #endregion
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -44,8 +49,10 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
 {
     #region Constructors
 
+
     public MergeTask()
     {
+        //Debugger.Launch();
         InputAssemblies = Array.Empty<ITaskItem>();
     }
 

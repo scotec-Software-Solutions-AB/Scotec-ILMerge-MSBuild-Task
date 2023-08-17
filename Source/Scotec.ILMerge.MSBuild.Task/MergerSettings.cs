@@ -27,6 +27,8 @@
 
 #endregion
 
+using System;
+using System.Linq;
 using System.Text.Json;
 
 namespace Scotec.ILMerge.MsBuild.Task;

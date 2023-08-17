@@ -27,6 +27,7 @@
 
 #endregion
 
+using System;
 using Microsoft.Build.Utilities;
 
 namespace Scotec.ILMerge.MsBuild.Task;
