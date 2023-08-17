@@ -52,6 +52,7 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
 
     public MergeTask()
     {
+        //Debugger.Launch();
         InputAssemblies = Array.Empty<ITaskItem>();
     }
 
@@ -254,6 +255,8 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
         }
 
         var targetPath = string.IsNullOrEmpty(IntermediateOutputPath) ? TargetPath : IntermediateOutputPath;
+
+
         if (settings.General.InputAssemblies == null || settings.General.InputAssemblies.Count == 0)
         {
             Log.LogMessage("No input assembles were found in configuration.");
@@ -263,7 +266,11 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
             Log.LogMessage($"Adding target assembly: {targetPath}");
             settings.General.InputAssemblies.Add(targetPath);
 
-            foreach (var item in InputAssemblies)
+            // When building projects in old .csproj format the @(ReferenceCopyLocalPaths) macro returns .pdb and .xml files as well.
+            // We need to filter out these files. This might happen even with new .csproj format but I never observed this.
+            //TODO: Probably we can do this already within the .targets file.
+            var inputAssembliesFilter = InputAssemblies.Where(item => Path.GetExtension(item.ItemSpec).ToLower() == ".dll");
+            foreach (var item in inputAssembliesFilter)
             {
                 Log.LogMessage($"Adding assembly: {item.ItemSpec}");
                 settings.General.InputAssemblies.Add(item.ItemSpec);
