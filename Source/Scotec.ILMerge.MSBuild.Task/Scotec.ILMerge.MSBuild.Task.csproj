@@ -12,7 +12,7 @@
 		<Authors>$(CompanyName)</Authors>
 		<Company>$(CompanyName)</Company>
 		<Copyright>$(CompanyName)</Copyright>
-		<Description>ILMerge MSBuild Task</Description>
+		<Description>The Scotec-ILMerge-MSBuild-Task is a MSBuild task that wraps the ILMerge.exe command-line tool.</Description>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IsPublishable>False</IsPublishable>
 		<PackageIcon>icon.png</PackageIcon>
@@ -27,8 +27,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<!--<DebugType>embedded</DebugType>
-		<DebugSymbols>true</DebugSymbols>-->
+		<DebugType>embedded</DebugType>
+		<DebugSymbols>true</DebugSymbols>
 	
 		<DevelopmentDependency>True</DevelopmentDependency>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
