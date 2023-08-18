@@ -22,7 +22,7 @@ jobs:
         useConfigFile: true
         configFilePath: GitVersion.yml
     - name: Updating build number
-      run: echo '##vso[build.updatebuildnumber]$(version.GitVersion_SemVer)'
+      run: echo '##vso[build.updatebuildnumber]$(GitVersion_SemVer)'
     - name: Display SemVer
       run: |
         echo "SemVer: $GITVERSION_SEMVER"        
