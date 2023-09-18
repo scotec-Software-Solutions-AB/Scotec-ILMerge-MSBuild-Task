@@ -98,9 +98,8 @@ internal class FrameworkInfo
         }
 
         var svalue = $"Bitness{architecture.ToLower().Replace("x", string.Empty)}";
-        log.LogMessage($"DotNetFrameworkArchitecture: {architecture}");
-
-
+        log.LogMessage($"DotNetFrameworkArchitecture: {svalue}");
+        
         var result =  Enum.TryParse(svalue, out frameworkArchitecture);
         log.LogMessage($"Result: {result}, Out: {frameworkArchitecture}");
 
