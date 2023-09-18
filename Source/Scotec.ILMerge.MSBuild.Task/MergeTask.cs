@@ -36,7 +36,6 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Build.Framework;
-using Microsoft.Build.Utilities;
 
 namespace Scotec.ILMerge.MsBuild.Task;
 
@@ -183,20 +182,6 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
         Log.LogMessage($"ILMergeConsolePath: {ILMergeConsolePath}");
         Log.LogMessage($"KeyFile: {KeyFile}");
         Log.LogMessage($"ConfigurationFilePath: {ConfigurationFilePath}");
-
-        Log.LogMessage("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        var path = ToolLocationHelper.GetPathToDotNetFramework(TargetDotNetFrameworkVersion.Version45);
-        Log.LogMessage(".NET 45:" + path);
-        path = ToolLocationHelper.GetPathToDotNetFramework(TargetDotNetFrameworkVersion.Version462);
-        Log.LogMessage(".NET 462:" + path);
-        path = ToolLocationHelper.GetPathToDotNetFramework(TargetDotNetFrameworkVersion.Version472);
-        Log.LogMessage(".NET 472:" + path);
-        path = ToolLocationHelper.GetPathToDotNetFramework(TargetDotNetFrameworkVersion.Version48);
-        Log.LogMessage(".NET 48:" + path);
-        path = ToolLocationHelper.GetPathToDotNetFramework(TargetDotNetFrameworkVersion.VersionLatest);
-        Log.LogMessage(".NET Latest:" + path);
-        Log.LogMessage("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
     }
 
     private bool DeserializeJsonConfig(string jsonConfig, out MergerSettings settings)
@@ -265,7 +250,7 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
 
         if (!settings.General.TargetPlatform.HasValue())
         {
-            settings.General.TargetPlatform = FrameworkInfo.ToILmergeTargetPlatform(TargetFrameworkVersion, TargetArchitecture, Log);
+            settings.General.TargetPlatform = FrameworkInfo.ToILmergeTargetPlatform(TargetFrameworkVersion, TargetArchitecture);
             Log.LogMessage($"Applying default value for TargetPlatform: {settings.General.TargetPlatform}");
         }
 
