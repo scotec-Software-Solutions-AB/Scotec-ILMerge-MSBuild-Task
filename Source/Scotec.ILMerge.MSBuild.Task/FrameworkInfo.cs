@@ -28,6 +28,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using Microsoft.Build.Utilities;
 
 namespace Scotec.ILMerge.MsBuild.Task;
@@ -71,10 +72,16 @@ internal class FrameworkInfo
                 frameworkVersion = TargetDotNetFrameworkVersion.Version40;
                 return true;
             case "45":
-            case "46":
-            case "47":
-            case "48":
                 frameworkVersion = TargetDotNetFrameworkVersion.Version45;
+                return true;
+            case "46":
+                frameworkVersion = TargetDotNetFrameworkVersion.Version46;
+                return true;
+            case "47":
+                frameworkVersion = TargetDotNetFrameworkVersion.Version47;
+                return true;
+            case "48":
+                frameworkVersion = TargetDotNetFrameworkVersion.Version48;
                 return true;
         }
 
@@ -82,16 +89,22 @@ internal class FrameworkInfo
         return false;
     }
 
-    public static bool TryParsePlatform(string architecture, out DotNetFrameworkArchitecture frameworkArchitecture)
+    public static bool TryParsePlatform(string architecture, out DotNetFrameworkArchitecture frameworkArchitecture, TaskLoggingHelper log)
     {
+        log.LogMessage($"TryParsePlatform: {architecture}");
         if (string.IsNullOrWhiteSpace(architecture))
         {
             throw new ArgumentNullException(nameof(architecture));
         }
 
-        var svalue = $"Bitness{architecture.ToLower().Replace("v", string.Empty).Replace(".", string.Empty)}";
+        var svalue = $"Bitness{architecture.ToLower().Replace("x", string.Empty)}";
+        log.LogMessage($"DotNetFrameworkArchitecture: {architecture}");
 
-        return Enum.TryParse(svalue, out frameworkArchitecture);
+
+        var result =  Enum.TryParse(svalue, out frameworkArchitecture);
+        log.LogMessage($"Out: {architecture}");
+
+        return result;
     }
 
     public static string GetPathToDotNetFramework(TargetDotNetFrameworkVersion version)
@@ -104,8 +117,9 @@ internal class FrameworkInfo
         return ToolLocationHelper.GetPathToDotNetFramework(version, architecture);
     }
 
-    public static string ToILmergeTargetPlatform(string version, string architecture)
+    public static string ToILmergeTargetPlatform(string version, string architecture, TaskLoggingHelper log)
     {
+        Debugger.Launch();
         if (string.IsNullOrWhiteSpace(version))
         {
             throw new ArgumentNullException(nameof(version));
@@ -118,16 +132,19 @@ internal class FrameworkInfo
             throw new ArgumentOutOfRangeException(nameof(version), $"Unable to parse .Net framework version: {version}");
         }
 
+        log.LogMessage($"Get .NET framework path. Version: {version}, Architecture: {architecture} ");
         if (string.IsNullOrWhiteSpace(architecture))
         {
             path = GetPathToDotNetFramework(fversion);
         }
         else
         {
-            path = TryParsePlatform(architecture, out var farchitecture) 
+            path = TryParsePlatform(architecture, out var farchitecture, log) 
                 ? GetPathToDotNetFramework(fversion, farchitecture) 
                 : GetPathToDotNetFramework(fversion);
         }
+
+        log.LogMessage($"PathToDotNetFramework: {path}");
 
         if (string.IsNullOrWhiteSpace(path))
         {

@@ -250,7 +250,7 @@ public sealed class MergeTask : Microsoft.Build.Utilities.Task
 
         if (!settings.General.TargetPlatform.HasValue())
         {
-            settings.General.TargetPlatform = FrameworkInfo.ToILmergeTargetPlatform(TargetFrameworkVersion, TargetArchitecture);
+            settings.General.TargetPlatform = FrameworkInfo.ToILmergeTargetPlatform(TargetFrameworkVersion, TargetArchitecture, Log);
             Log.LogMessage($"Applying default value for TargetPlatform: {settings.General.TargetPlatform}");
         }
 
