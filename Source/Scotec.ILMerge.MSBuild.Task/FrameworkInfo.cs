@@ -119,7 +119,6 @@ internal class FrameworkInfo
 
     public static string ToILmergeTargetPlatform(string version, string architecture, TaskLoggingHelper log)
     {
-        Debugger.Launch();
         if (string.IsNullOrWhiteSpace(version))
         {
             throw new ArgumentNullException(nameof(version));
