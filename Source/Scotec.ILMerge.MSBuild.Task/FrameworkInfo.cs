@@ -102,7 +102,7 @@ internal class FrameworkInfo
 
 
         var result =  Enum.TryParse(svalue, out frameworkArchitecture);
-        log.LogMessage($"Out: {architecture}");
+        log.LogMessage($"Result: {result}, Out: {frameworkArchitecture}");
 
         return result;
     }
@@ -131,7 +131,7 @@ internal class FrameworkInfo
             throw new ArgumentOutOfRangeException(nameof(version), $"Unable to parse .Net framework version: {version}");
         }
 
-        log.LogMessage($"Get .NET framework path. Version: {version}, Architecture: {architecture} ");
+        log.LogMessage($"Get .NET framework path. Version: {fversion}, Architecture: {architecture} ");
         if (string.IsNullOrWhiteSpace(architecture))
         {
             path = GetPathToDotNetFramework(fversion);
